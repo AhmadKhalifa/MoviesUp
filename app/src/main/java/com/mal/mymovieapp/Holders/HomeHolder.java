@@ -22,3 +22,6 @@ public class HomeHolder extends RecyclerView.ViewHolder{
         rate = (RatingBar)itemView.findViewById(R.id.rating_bar);
     }
 }
+
+//gson
+//json

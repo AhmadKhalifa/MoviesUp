@@ -28,7 +28,6 @@ import com.mal.mymovieapp.Builders.MovieBuilder;
 import com.mal.mymovieapp.Objects.Movie;
 import com.mal.mymovieapp.R;
 import com.mal.mymovieapp.Utilities.DateFormatter;
-import com.mal.mymovieapp.Utilities.Global;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
@@ -55,7 +54,7 @@ public class Details extends AppCompatActivity {
             }
             else {
                 new AlertDialog.Builder(Details.this)
-                        .setTitle("Error")
+                        .setTitle(R.string.error)
                         .setMessage(
                                 "Error retrieving data from server, please try again later."
                         )

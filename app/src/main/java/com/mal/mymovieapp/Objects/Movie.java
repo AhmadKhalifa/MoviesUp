@@ -2,6 +2,7 @@ package com.mal.mymovieapp.Objects;
 
 public class Movie {
 
+   // @SerilzeName("title_name")@Expose
     private String title;
     private String releaseDate;
     private String posterURL;

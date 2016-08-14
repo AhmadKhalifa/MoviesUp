@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +19,8 @@ import com.mal.mymovieapp.Builders.MovieJSONBuilder;
 import com.mal.mymovieapp.Holders.HomeHolder;
 import com.mal.mymovieapp.Objects.Movie;
 import com.mal.mymovieapp.R;
-import com.mal.mymovieapp.Utilities.Global;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
@@ -49,14 +51,26 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeHolder> {
     }
 
     @Override
-    public void onBindViewHolder(HomeHolder holder, final int position) {
-        Movie movie = movies.get(position);
+    public void onBindViewHolder(final HomeHolder holder, final int position) {
+        final Movie movie = movies.get(position);
         holder.title.setText(movie.getTitle());
         holder.rate.setRating(movie.getRate() / 2);
-        Picasso.
-                with(context).
-                load("http://image.tmdb.org/t/p/w780/" + movie.getPosterURL()).
-                into(holder.poster);
+        Picasso.with(context)
+                .load("http://image.tmdb.org/t/p/w780/" + movie.getPosterURL())
+                .networkPolicy(NetworkPolicy.OFFLINE)
+                .placeholder(R.drawable.black_loading)
+                .error(R.drawable.error)
+                .into(holder.poster, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                    }
+                    @Override
+                    public void onError() {
+                        Picasso.with(context)
+                                .load("http://image.tmdb.org/t/p/w780/" + movie.getPosterURL())
+                                .into(holder.poster);
+                    }
+                });
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +81,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeHolder> {
                       successJSONobectPair.second.toString()));
                 }
                 else {
-                    new AlertDialog.Builder(Global.homeContext)
+                    new AlertDialog.Builder(context)
                             .setTitle("Error")
                             .setMessage(
                                     "Error retrieving data from server, please try again later."
@@ -81,6 +95,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeHolder> {
                 }
             }
         });
+
     }
 
     @Override

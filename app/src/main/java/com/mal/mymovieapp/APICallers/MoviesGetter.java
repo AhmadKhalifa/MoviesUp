@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.mal.mymovieapp.Activities.Home;
 import com.mal.mymovieapp.Adapters.HomeAdapter;
 import com.mal.mymovieapp.Objects.Movie;
-import com.mal.mymovieapp.Utilities.Global;
 import com.mal.mymovieapp.Builders.MovieBuilder;
 
 import org.json.JSONArray;
@@ -30,7 +29,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class MoviesGetter extends AsyncTask<Integer, String, String> {
+public abstract class MoviesGetter extends AsyncTask<Integer, String, String> {
 
     public static int MOST_POPULAR = 0;
     public static int TOP_RATED = 1;
@@ -38,7 +37,7 @@ public class MoviesGetter extends AsyncTask<Integer, String, String> {
     private int queryCode;
     private ProgressDialog progressDialog;
     private String[] queryType = {"popular", "top_rated"};
-
+    private ArrayList<Movie> movies;
 
     @Override
     protected String doInBackground(Integer... params) {
@@ -102,14 +101,14 @@ public class MoviesGetter extends AsyncTask<Integer, String, String> {
             try {
                 JSONResult = new JSONObject(result);
                 JSONArray array = JSONResult.getJSONArray("results");
-                Home.movies = new ArrayList<>();
+                movies = new ArrayList<>();
                 Pair<Boolean, Movie> successMoviePair;
                 for (int i = 0; i < array.length(); i++) {
                     JSONObject jsonobject = array.getJSONObject(i);
                     successMoviePair = MovieBuilder.build(jsonobject);
                     error = !successMoviePair.first;
                     if (!error){
-                        Home.movies.add(successMoviePair.second);
+                        movies.add(successMoviePair.second);
                     }
                     else {
                         throw new JSONException("");
@@ -121,33 +120,11 @@ public class MoviesGetter extends AsyncTask<Integer, String, String> {
             }
         }
         if (error){
-            new AlertDialog.Builder(Global.homeContext)
-                    .setTitle("Error")
-                    .setMessage(
-                            "Error retrieving data from server, please try again later."
-                    )
-                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    })
-                    .setIcon(android.R.drawable.stat_notify_error)
-                    .show();
+            onPost(null);
         }
         else {
-            Home.adapter = new HomeAdapter(Global.homeContext, Home.movies);
-            //RecyclerView.LayoutManager gridLayoutManager = new GridLayoutManager(Global.homeContext, 2);
-
-            if(Global.homeContext.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
-                Home.recyclerView.setLayoutManager(new GridLayoutManager(Global.homeContext, 2));
-            }
-            else{
-                Home.recyclerView.setLayoutManager(new GridLayoutManager(Global.homeContext, 3));
-            }
-
-
-            //Home.recyclerView.setLayoutManager(gridLayoutManager);
-            Home.recyclerView.setItemAnimator(new DefaultItemAnimator());
-            Home.recyclerView.setAdapter(Home.adapter);
+            onPost(movies);
         }
     }
+   public abstract void onPost(ArrayList<Movie> list);
 }
