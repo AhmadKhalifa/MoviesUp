@@ -3,21 +3,18 @@ package com.mal.mymovieapp.Adapters;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mal.mymovieapp.Activities.Details;
-import com.mal.mymovieapp.Builders.MovieJSONBuilder;
+import com.mal.mymovieapp.Builders.Movies.MovieJSONBuilder;
 import com.mal.mymovieapp.Holders.HomeHolder;
-import com.mal.mymovieapp.Objects.Movie;
+import com.mal.mymovieapp.Models.Movie;
 import com.mal.mymovieapp.R;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.NetworkPolicy;
@@ -31,10 +28,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeHolder> {
 
     private Context context;
     private ArrayList<Movie> movies;
-
-    public HomeAdapter(Context context, ArrayList<Movie> movies){
+    private boolean tabletView;
+    public HomeAdapter(Context context, ArrayList<Movie> movies, boolean tabletView){
         this.context = context;
         this.movies = movies;
+        this.tabletView = tabletView;
     }
 
     @Override
@@ -53,8 +51,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeHolder> {
     @Override
     public void onBindViewHolder(final HomeHolder holder, final int position) {
         final Movie movie = movies.get(position);
-        holder.title.setText(movie.getTitle());
-        holder.rate.setRating(movie.getRate() / 2);
         Picasso.with(context)
                 .load("http://image.tmdb.org/t/p/w780/" + movie.getPosterURL())
                 .networkPolicy(NetworkPolicy.OFFLINE)
@@ -77,8 +73,22 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeHolder> {
                 Pair<Boolean, JSONObject> successJSONobectPair =
                         MovieJSONBuilder.build(movies.get(position));
                 if (successJSONobectPair.first){
-                    v.getContext().startActivity(Details.showDetails(v.getContext(),
-                      successJSONobectPair.second.toString()));
+                    if (tabletView){
+                        Bundle arguments = new Bundle();
+                        arguments.putString("object", successJSONobectPair.second.toString());
+                        com.mal.mymovieapp.Fragments.Details details
+                                 = new com.mal.mymovieapp.Fragments.Details();
+                        details.setArguments(arguments);
+                        ((FragmentActivity)context)
+                                .getSupportFragmentManager()
+                                .beginTransaction()
+                                .replace(R.id.movie_details_container, details)
+                                .commit();
+                    }
+                    else {
+                        v.getContext().startActivity(Details.showDetails(v.getContext(),
+                                successJSONobectPair.second.toString()));
+                    }
                 }
                 else {
                     new AlertDialog.Builder(context)
@@ -96,6 +106,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeHolder> {
             }
         });
 
+    }
+
+    public String getFirstMovieJSON(){
+        return MovieJSONBuilder.build(movies.get(0)).second.toString();
     }
 
     @Override

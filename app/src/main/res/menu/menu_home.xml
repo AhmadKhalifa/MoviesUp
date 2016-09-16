@@ -1,17 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".Activities.Home">
-    <item
-        android:id="@+id/action_most_popular"
-        android:title="Most popular"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/action_top_rated"
-        android:title="Top rated"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/action_settings"
-        android:title="Settings"
-        app:showAsAction="never" />
+xmlns:app="http://schemas.android.com/apk/res-auto">
+<item
+    android:id="@+id/action_most_popular"
+    android:icon="@drawable/ic_group_white_36dp"
+    android:title="Most popular"
+    app:showAsAction="always" />
+<item
+    android:id="@+id/action_top_rated"
+    android:icon="@drawable/ic_star_half_white_36dp"
+    android:title="Top rated"
+    app:showAsAction="always" />
+<item
+    android:id="@+id/action_my_favourites"
+    android:icon="@drawable/ic_favorite_white_36dp"
+    android:title="My favourites"
+    app:showAsAction="always" />
 </menu>

@@ -1,43 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="240dp"
+    android:orientation="vertical" android:layout_width="160dp"
     android:id="@+id/grid_item"
-    android:layout_height="wrap_content">
-
+    android:layout_height="240dp">
     <ImageView
         android:id="@+id/movie_poster"
         android:background="#000"
-        android:layout_width="240dp"
-        android:layout_height="360dp" />
-
-    <TextView
-        android:padding="10dp"
-        android:id="@+id/movie_name"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#000"
-        android:gravity="center"
-        android:textColor="#fff"
-        android:textSize="25sp"
-        android:text="Movie name"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#000"
-        android:gravity="center"
-        android:paddingBottom="10dp">
-        <RatingBar
-            android:background="#000"
-            android:progressTint="#cc6306"
-            android:secondaryProgressTint="#fff"
-            android:id="@+id/rating_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="?android:attr/ratingBarStyleIndicator"
-            android:numStars="5"
-            android:stepSize="0.1"
-            android:isIndicator="true" />
-    </LinearLayout>
-
+        android:layout_width="160dp"
+        android:layout_height="240dp" />
 </LinearLayout>
