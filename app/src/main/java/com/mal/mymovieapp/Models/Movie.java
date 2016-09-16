@@ -1,7 +1,5 @@
 package com.mal.mymovieapp.Models;
 
-import java.util.ArrayList;
-
 public class Movie {
 
     private String title;
@@ -17,24 +15,6 @@ public class Movie {
     private float rate;
     private boolean adult;
     private boolean video;
-    private ArrayList<Trailer> trailers;
-    private ArrayList<Review> reviews;
-
-    public ArrayList<Trailer> getTrailers() {
-        return trailers;
-    }
-
-    public void setTrailers(ArrayList<Trailer> trailers) {
-        this.trailers = trailers;
-    }
-
-    public ArrayList<Review> getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(ArrayList<Review> reviews) {
-        this.reviews = reviews;
-    }
 
     public Movie(){
 

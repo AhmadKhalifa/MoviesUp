@@ -37,7 +37,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeHolder> {
 
     @Override
     public HomeHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
-        final View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_movie, parent, false);
+        final View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.home_movie, parent, false);
         return new HomeHolder(itemView);
     }
 
@@ -89,7 +90,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeHolder> {
                             .setMessage(
                                     "Error retrieving data from server, please try again later."
                             )
-                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            .setPositiveButton(android.R.string.ok,
+                                    new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                 }
                             })

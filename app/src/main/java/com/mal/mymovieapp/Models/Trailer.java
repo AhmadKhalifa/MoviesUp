@@ -1,8 +1,5 @@
 package com.mal.mymovieapp.Models;
 
-/**
- * Created by ACali on 9/10/2016.
- */
 public class Trailer {
     private String id;
     private String iso_639_1;

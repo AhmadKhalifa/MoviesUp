@@ -14,9 +14,6 @@ import com.mal.mymovieapp.R;
 
 import java.util.ArrayList;
 
-/**
- * Created by ACali on 9/10/2016.
- */
 public class ReviewAdapter extends RecyclerView.Adapter<ReviewHolder>{
     private Context context;
     private ArrayList<Review> reviews;
@@ -28,7 +25,8 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewHolder>{
 
     @Override
     public ReviewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
-        final View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_review, parent, false);
+        final View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.list_item_review, parent, false);
         return new ReviewHolder(itemView);
     }
 

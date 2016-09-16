@@ -7,9 +7,6 @@ import com.mal.mymovieapp.Models.Trailer;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Created by ACali on 9/10/2016.
- */
 public class TrailerBuilder {
     public static Pair<Boolean, Trailer> build(JSONObject object){
 

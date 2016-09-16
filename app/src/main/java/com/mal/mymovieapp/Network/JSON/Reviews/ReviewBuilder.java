@@ -7,9 +7,6 @@ import com.mal.mymovieapp.Models.Review;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Created by ACali on 9/10/2016.
- */
 public class ReviewBuilder {
     public static Pair<Boolean, Review> build(JSONObject object){
 

@@ -23,7 +23,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mal.mymovieapp.Network.API.ReviewsGetter;
 import com.mal.mymovieapp.Network.API.TrailersGetter;
@@ -54,7 +53,6 @@ public class Details extends Fragment implements View.OnClickListener{
     private TrailerAdapter trailerAdapter;
     private TextView noTrailers;
     private TextView noReviews;
-    private ImageButton back;
     private boolean activity;
     private String key;
 
@@ -92,7 +90,7 @@ public class Details extends Fragment implements View.OnClickListener{
         }
 
         final LinearLayout innerImage = (LinearLayout)view.findViewById(R.id.inner_image);
-        back = (ImageButton)view.findViewById(R.id.back);
+        ImageButton back = (ImageButton) view.findViewById(R.id.back);
         TextView title = (TextView) view.findViewById(R.id.movie_title);
         TextView voters = (TextView)view.findViewById(R.id.voters);
         TextView overview = (TextView) view.findViewById(R.id.overview);

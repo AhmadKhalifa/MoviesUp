@@ -7,9 +7,6 @@ import com.mal.mymovieapp.Models.Movie;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Created by ACali on 8/11/2016.
- */
 public class MovieBuilder {
     public static Pair<Boolean, Movie> build(JSONObject object){
 

@@ -1,8 +1,5 @@
 package com.mal.mymovieapp.Models;
 
-/**
- * Created by ACali on 9/10/2016.
- */
 public class Review {
     private String id;
     private String author;

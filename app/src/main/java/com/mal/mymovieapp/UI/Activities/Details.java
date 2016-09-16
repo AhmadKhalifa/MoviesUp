@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import com.mal.mymovieapp.R;
 
 public class Details extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

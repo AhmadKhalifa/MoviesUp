@@ -30,22 +30,6 @@ public class FavouritesDatabase extends SQLiteOpenHelper {
     private static final String KEY_ADULT = "adult";
     private static final String KEY_VIDEO = "video";
 
-    private static final String[] COLUMNS = {
-            KEY_ID,
-            KEY_TITLE,
-            KEY_RELEASE_DATE,
-            KEY_POSTER_URL,
-            KEY_BACKDROP_URL,
-            KEY_OVERVIEW,
-            KEY_ORIGINAL_TITLE,
-            KEY_LANGUAGE,
-            KEY_VOTE_COUNT,
-            KEY_POPULARITY,
-            KEY_RATE,
-            KEY_ADULT,
-            KEY_VIDEO
-    };
-
     public FavouritesDatabase(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -106,7 +90,8 @@ public class FavouritesDatabase extends SQLiteOpenHelper {
 
     public boolean movieExists(String _KEY_ID){
         ArrayList<Movie> movies = new ArrayList<>();
-        String query = String.format("SELECT * FROM %s where %s = %s", TABLE_MOVIES, KEY_ID, _KEY_ID);
+        String query = String.format("SELECT * FROM %s where %s = %s",
+                TABLE_MOVIES, KEY_ID, _KEY_ID);
         SQLiteDatabase database = this.getWritableDatabase();
         Cursor cursor = database.rawQuery(query, null);
         if (cursor.moveToFirst()){

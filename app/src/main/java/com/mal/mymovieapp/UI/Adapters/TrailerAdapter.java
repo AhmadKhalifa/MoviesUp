@@ -13,9 +13,6 @@ import com.mal.mymovieapp.R;
 
 import java.util.ArrayList;
 
-/**
- * Created by ACali on 9/10/2016.
- */
 public class TrailerAdapter extends RecyclerView.Adapter<TrailerHolder>{
     private Context context;
     private ArrayList<Trailer> trailers;
