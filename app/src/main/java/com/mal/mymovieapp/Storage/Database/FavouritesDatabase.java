@@ -1,4 +1,4 @@
-package com.mal.mymovieapp.Databases;
+package com.mal.mymovieapp.Storage.Database;
 
 import android.content.ContentValues;
 import android.content.Context;

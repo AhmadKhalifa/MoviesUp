@@ -1,4 +1,4 @@
-package com.mal.mymovieapp.Fragments;
+package com.mal.mymovieapp.UI.Fragments;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -25,12 +25,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mal.mymovieapp.APICallers.ReviewsGetter;
-import com.mal.mymovieapp.APICallers.TrailersGetter;
-import com.mal.mymovieapp.Activities.Home;
-import com.mal.mymovieapp.Adapters.ReviewAdapter;
-import com.mal.mymovieapp.Adapters.TrailerAdapter;
-import com.mal.mymovieapp.Builders.Movies.MovieBuilder;
+import com.mal.mymovieapp.Network.API.ReviewsGetter;
+import com.mal.mymovieapp.Network.API.TrailersGetter;
+import com.mal.mymovieapp.UI.Activities.Home;
+import com.mal.mymovieapp.UI.Adapters.ReviewAdapter;
+import com.mal.mymovieapp.UI.Adapters.TrailerAdapter;
+import com.mal.mymovieapp.Network.JSON.Movies.MovieBuilder;
 import com.mal.mymovieapp.Models.Movie;
 import com.mal.mymovieapp.Models.Review;
 import com.mal.mymovieapp.Models.Trailer;
@@ -209,6 +209,7 @@ public class Details extends Fragment implements View.OnClickListener{
                     addToFavourite.setText("Add to favourites");
                 }
             }
+            Home.updateFavourites();
         }
     }
 }

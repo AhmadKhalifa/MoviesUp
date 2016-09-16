@@ -1,14 +1,11 @@
-package com.mal.mymovieapp.APICallers;
+package com.mal.mymovieapp.Network.API;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.util.Pair;
 
-import com.mal.mymovieapp.Models.Movie;
-import com.mal.mymovieapp.Builders.Movies.MovieBuilder;
+import com.mal.mymovieapp.Network.JSON.Reviews.ReviewBuilder;
+import com.mal.mymovieapp.Models.Review;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,23 +19,21 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public abstract class MoviesGetter extends AsyncTask<String, String, String> {
+public abstract class ReviewsGetter extends AsyncTask<String, String, String> {
 
-    public static String MOST_POPULAR = "popular";
-    public static String TOP_RATED = "top_rated";
-    private ArrayList<Movie> movies;
+    private ArrayList<Review> reviews;
 
     @Override
     protected String doInBackground(String... params) {
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
-        String queryType = params[0];
+        String movieID = params[0];
         String key = params[1];
         try {
             URL url = new URL(
                     "http://api.themoviedb.org/3/movie/" +
-                            queryType +
-                            "?api_key=" +
+                            movieID +
+                    "/reviews?api_key=" +
                             key
             );
 
@@ -90,14 +85,14 @@ public abstract class MoviesGetter extends AsyncTask<String, String, String> {
             try {
                 JSONResult = new JSONObject(result);
                 JSONArray array = JSONResult.getJSONArray("results");
-                movies = new ArrayList<>();
-                Pair<Boolean, Movie> successMoviePair;
+                reviews = new ArrayList<>();
+                Pair<Boolean, Review> successReviewPair;
                 for (int i = 0; i < array.length(); i++) {
                     JSONObject jsonobject = array.getJSONObject(i);
-                    successMoviePair = MovieBuilder.build(jsonobject);
-                    error = !successMoviePair.first;
+                    successReviewPair = ReviewBuilder.build(jsonobject);
+                    error = !successReviewPair.first;
                     if (!error){
-                        movies.add(successMoviePair.second);
+                        reviews.add(successReviewPair.second);
                     }
                     else {
                         throw new JSONException("");
@@ -109,11 +104,11 @@ public abstract class MoviesGetter extends AsyncTask<String, String, String> {
             }
         }
         if (error){
-            onPost(null);
+            onPost(new ArrayList<Review>());
         }
         else {
-            onPost(movies);
+            onPost(reviews);
         }
     }
-   public abstract void onPost(ArrayList<Movie> list);
+    public abstract void onPost(ArrayList<Review> list);
 }

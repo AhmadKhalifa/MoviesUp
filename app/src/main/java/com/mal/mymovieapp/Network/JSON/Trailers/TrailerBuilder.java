@@ -1,4 +1,4 @@
-package com.mal.mymovieapp.Builders.Trailers;
+package com.mal.mymovieapp.Network.JSON.Trailers;
 
 import android.util.Pair;
 

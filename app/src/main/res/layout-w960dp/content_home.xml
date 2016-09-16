@@ -7,7 +7,7 @@
     android:id="@+id/home"
     android:background="#000"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Activities.Home"
+    tools:context=".UI.Activities.Activities.Home"
     android:orientation="horizontal"
     tools:showIn="@layout/activity_home">
 

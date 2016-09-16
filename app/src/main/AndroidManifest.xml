@@ -3,6 +3,7 @@
     package="com.mal.mymovieapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -11,24 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Activities.Home"
+            android:name=".UI.Activities.Home"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>j
         <activity
-            android:name=".Activities.Details"
+            android:name=".UI.Activities.Details"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
     </activity>
-        <activity
-            android:name=".Activities.SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:parentActivityName=".Activities.Home">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.mal.mymovieapp.Activities.Home" />
-        </activity>
-        <activity android:name=".Activities.SplashScreen"
+
+        <activity android:name=".UI.Activities.SplashScreen"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
             <intent-filter>

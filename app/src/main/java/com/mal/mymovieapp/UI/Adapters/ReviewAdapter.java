@@ -1,4 +1,4 @@
-package com.mal.mymovieapp.Adapters;
+package com.mal.mymovieapp.UI.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,9 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.mal.mymovieapp.Holders.ReviewHolder;
+import com.mal.mymovieapp.UI.ViewHolders.ReviewHolder;
 import com.mal.mymovieapp.Models.Review;
 import com.mal.mymovieapp.R;
 

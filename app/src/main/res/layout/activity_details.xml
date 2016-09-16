@@ -3,5 +3,5 @@
     android:id="@+id/current_movie_details_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.mal.mymovieapp.Fragments.Details"
+    tools:context=".UI.Fragments.Details"
     tools:ignore="MergeRootFrame"/>

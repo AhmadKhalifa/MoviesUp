@@ -1,4 +1,4 @@
-package com.mal.mymovieapp.Builders.Reviews;
+package com.mal.mymovieapp.Network.JSON.Reviews;
 
 import android.util.Pair;
 

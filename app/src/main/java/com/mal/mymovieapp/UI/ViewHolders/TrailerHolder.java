@@ -1,4 +1,4 @@
-package com.mal.mymovieapp.Holders;
+package com.mal.mymovieapp.UI.ViewHolders;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

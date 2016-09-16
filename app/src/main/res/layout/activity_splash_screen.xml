@@ -10,7 +10,7 @@
     android:background="#000"
     android:orientation="vertical"
     android:weightSum="100"
-    tools:context=".Activities.SplashScreen">
+    tools:context=".UI.Activities.Activities.SplashScreen">
 
     <LinearLayout
         android:layout_width="match_parent"

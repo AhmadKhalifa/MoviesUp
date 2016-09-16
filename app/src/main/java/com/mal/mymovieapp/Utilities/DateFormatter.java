@@ -1,7 +1,7 @@
 package com.mal.mymovieapp.Utilities;
 
-public class DateFormatter {
 
+public class DateFormatter {
     public static String format(String date){
         String[] months = {
                 "Jan",

@@ -1,4 +1,4 @@
-package com.mal.mymovieapp.Adapters;
+package com.mal.mymovieapp.UI.Adapters;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -11,9 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mal.mymovieapp.Activities.Details;
-import com.mal.mymovieapp.Builders.Movies.MovieJSONBuilder;
-import com.mal.mymovieapp.Holders.HomeHolder;
+import com.mal.mymovieapp.UI.Activities.Details;
+import com.mal.mymovieapp.Network.JSON.Movies.MovieJSONBuilder;
+import com.mal.mymovieapp.UI.ViewHolders.HomeHolder;
 import com.mal.mymovieapp.Models.Movie;
 import com.mal.mymovieapp.R;
 import com.squareup.picasso.Callback;
@@ -38,13 +38,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeHolder> {
     @Override
     public HomeHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
         final View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_movie, parent, false);
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Toast.makeText(v.getContext(), "" + parent.indexOfChild(itemView), Toast.LENGTH_SHORT).show();
-
-            }
-        });
         return new HomeHolder(itemView);
     }
 
@@ -76,8 +69,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeHolder> {
                     if (tabletView){
                         Bundle arguments = new Bundle();
                         arguments.putString("object", successJSONobectPair.second.toString());
-                        com.mal.mymovieapp.Fragments.Details details
-                                 = new com.mal.mymovieapp.Fragments.Details();
+                        com.mal.mymovieapp.UI.Fragments.Details details
+                                 = new com.mal.mymovieapp.UI.Fragments.Details();
                         details.setArguments(arguments);
                         ((FragmentActivity)context)
                                 .getSupportFragmentManager()

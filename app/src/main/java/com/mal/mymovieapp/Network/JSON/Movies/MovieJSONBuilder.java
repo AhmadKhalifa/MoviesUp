@@ -1,4 +1,4 @@
-package com.mal.mymovieapp.Builders.Movies;
+package com.mal.mymovieapp.Network.JSON.Movies;
 
 import android.util.Pair;
 

@@ -1,4 +1,4 @@
-package com.mal.mymovieapp.Activities;
+package com.mal.mymovieapp.UI.Activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -25,8 +25,8 @@ public class Details extends AppCompatActivity {
         Bundle arguments = new Bundle();
         arguments.putString("object", getIntent().getExtras().getString("object"));
         arguments.putBoolean("fromDetailsActivity", true);
-        com.mal.mymovieapp.Fragments.Details details
-                = new com.mal.mymovieapp.Fragments.Details();
+        com.mal.mymovieapp.UI.Fragments.Details details
+                = new com.mal.mymovieapp.UI.Fragments.Details();
         details.setArguments(arguments);
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.current_movie_details_container, details)

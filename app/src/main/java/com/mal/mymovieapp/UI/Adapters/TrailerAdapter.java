@@ -1,4 +1,4 @@
-package com.mal.mymovieapp.Adapters;
+package com.mal.mymovieapp.UI.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.mal.mymovieapp.Holders.TrailerHolder;
+import com.mal.mymovieapp.UI.ViewHolders.TrailerHolder;
 import com.mal.mymovieapp.Models.Trailer;
 import com.mal.mymovieapp.R;
 

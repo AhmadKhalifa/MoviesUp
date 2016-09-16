@@ -1,4 +1,4 @@
-package com.mal.mymovieapp.Activities;
+package com.mal.mymovieapp.UI.Activities;
 
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
